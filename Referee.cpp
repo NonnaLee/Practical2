@@ -1,27 +1,40 @@
 #include <iostream>
 #include "Referee.h"
-#include "Computer.h"
-#include "Human.h"
 
 using namespace std;
 
-char getMove(char humanMove, char computerMove) {
-	char result = 'T';
-	if (humanMove == computerMove) {
-		return result;
-	}
-	else {
-		if ((humanMove == 'R' && computerMove == 'S') ||
-			(humanMove == 'S' && computerMove == 'P') ||
-			(humanMove == 'P' && computerMove == 'R')) {
-			result = 'W';
-		}
-		else {
-			result = 'L';
-		}
-		return result;
-	}
+    char Referee::refGame(Player& player1, Player& player2){ 
+        
+        
 
-	cout << "Result: " << result << endl;
+        char player1Move = player1.getMove();
+        char player2Move = player2.getMove();
 
+        if(player1Move == player2Move){
+            tieMove = true;
+            result = 'T';
+        }
+        else if(player1Move == 'R' && player2Move == 'S' || 
+           player1Move == 'S' && player2Move == 'P' || 
+           player1Move == 'P' && player2Move == 'R'){
+           player1Win = true;
+           result = 'W';
+        }else{
+           player1Win = false;
+           result = 'L';
+        }
+        
+        
+        //player2Results[gamePlayed] = result;
+        //gamePlayed++;
+        return result;
 };
+
+
+    void Referee::outputResults(){
+        //cout << "Results for human player are: ";
+
+        for(int i=0; i<gamePlayed; i++){
+            cout << player2Results[i] << " ";
+        }
+    };
