@@ -1,6 +1,6 @@
 #include <iostream>
-#include "ComputerPlayer.h"
-#include "HumanPlayer.h"
+#include "Computer.h"
+#include "Human.h"
 #include "Player.h"
 
 using namespace std;
